@@ -6,13 +6,27 @@ import java.util.*;
 public class Agency {
     private List<User> usersList = new ArrayList<>();
     private List<Contract> contractsList = new ArrayList<>();
-    private Map<String, List<Residence>> ResidenceMap = new HashMap<>();
+    private Map<String, Residence> residenceMap = new HashMap<String, Residence>() {{
+        put("House",new House("Bucuresti",60,15000, 80));
+        put("Apartment", new Apartment("Bucuresti",60,10000, 3));
+        put("Penthouse", new Penthouse("Bucuresti",70,30000, 200));
+    }};
     private static class SingletonHolder{
         private static final Agency INSTANCE = new Agency();
     }
-
     public static Agency getInstance(){
         return SingletonHolder.INSTANCE;
+    }
+    public void init(){
+        usersList = new ArrayList<>(Arrays.asList(
+                new Agent("Mihai","Popescu","popescumihai@gmail.pao",2300),
+                new Agent("Adela","Corbeanu","corbeanuadela@gmail.cat",5000),
+                new Client("Vasile","Ion","ionvasile@gmail.pao",40000),
+                new Client("Stefan","Diaconu","diaconustefan@gmail.pao",100000),
+                new Client("Andrei","Tava","tavaandrei@gmail.pao",500)
+        ));
+        residenceMap.put("House", new House("Bucuresti",30,9000, 10));
+
     }
     public List<User> getUsersList() {
         return usersList;
@@ -21,8 +35,8 @@ public class Agency {
         return contractsList;
     }
 
-    public Map<String, List<Residence>> getResidenceMap() {
-        return ResidenceMap;
+    public Map<String, Residence> getResidenceMap() {
+        return residenceMap;
     }
 
     public Optional<Agent> getAgentByName(String firstName, String lastName){

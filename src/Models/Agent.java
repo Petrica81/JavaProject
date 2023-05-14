@@ -22,6 +22,6 @@ public class Agent extends User{
                 ", lastName = '" + super.getLastName() + '\'' +
                 ", email = '" + super.getEmail() + '\'' +
                 ", salary = " + this.salary + '$' +
-                '}';
+                "}\n";
     }
 }

@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) {
 
         var service = Agency.getInstance();
+        service.init();
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Do you have an account?: (Y/N)");
@@ -81,7 +82,25 @@ public class Main {
         if(user instanceof Client) System.out.println("Welcome to your helper to get a new house!\nn");
         else System.out.println("Today is your day to sell a house!\n");
 
+        boolean exit = false;
 
-        System.out.println(service.getUsersList());
+        while(!exit){
+            System.out.println("Select your operation:\n");
+            System.out.println("1. List all residences");
+            System.out.println("2. List specific residences");
+            System.out.println("3. List all agents");
+            System.out.println("4. View your data");
+            System.out.println("5. Change my account email");
+
+            if(user instanceof Agent){
+                System.out.println("6. List all clients");
+                System.out.println("7. Publish a new residence");
+            }
+            else{
+                System.out.println("6. Buy a residence");
+                System.out.println("7. Add money to wallet");
+            }
+            var op = scanner.next();
+        }
     }
 }

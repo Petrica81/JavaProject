@@ -3,9 +3,9 @@ package Models;
 public abstract class Residence {
     private String address;
     private Integer area;
-    private Float price;
+    private Integer price;
 
-    public Residence(String address, Integer area, Float price){
+    public Residence(String address, Integer area, Integer price){
         this.address = address;
         this.area = area;
         this.price = price;
@@ -27,11 +27,13 @@ public abstract class Residence {
         this.area = area;
     }
 
-    public Float getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
+
+
 }

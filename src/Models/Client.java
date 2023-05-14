@@ -21,6 +21,6 @@ public class Client extends User{
                 ", lastName = '" + super.getLastName() + '\'' +
                 ", email = '" + super.getEmail() + '\'' +
                 ", wallet = " + this.wallet + '$' +
-                '}';
+                "}\n";
     }
 }
