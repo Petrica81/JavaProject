@@ -1,4 +1,6 @@
-public class Apartment extends Residence{
+package Models;
+
+public class Apartment extends Residence {
     private Integer floor;
 
     public Apartment(String address, Integer area, Float price, Integer floor){

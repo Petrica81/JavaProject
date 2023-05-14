@@ -1,12 +1,12 @@
-public class Agent {
-    private String firstName, lastName, email;
-    private Integer salary;
+package Models;
 
-    public Agent(String firstName, String lastName, String email, Integer salary) {
+public class Client {
+    private String firstName, lastName, email;
+
+    public Client(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.salary = salary;
     }
 
     public String getFirstName() {
@@ -31,13 +31,5 @@ public class Agent {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Integer getSalary() {
-        return salary;
-    }
-
-    public void setSalary(Integer salary) {
-        this.salary = salary;
     }
 }

@@ -1,4 +1,6 @@
-public class Penthouse extends Residence{
+package Models;
+
+public class Penthouse extends Residence {
     private Integer poolSize;
 
     public Penthouse(String address, Integer area, Float price, Integer poolSize){

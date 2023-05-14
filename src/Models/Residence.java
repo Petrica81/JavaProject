@@ -1,3 +1,5 @@
+package Models;
+
 public abstract class Residence {
     private String address;
     private Integer area;

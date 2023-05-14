@@ -3,17 +3,17 @@ Project for advanced oriented programing.
 
 Object classes:
 
-1. House:
+1. Models.House:
   - garden area(int)
-2. Apartment:
+2. Models.Apartment:
   - floor(int)
-3. Penthouse:
+3. Models.Penthouse:
   - poolSize(int)
-4. Residence (Base class for 1,2,3):
+4. Models.Residence (Base class for 1,2,3):
   - name(string)
   - area(int)
   - price(float)
-5. Agent:
+5. Models.Agent:
   - lastName(string)
   - firstName(string)
   - email(string)
@@ -23,12 +23,12 @@ Object classes:
   - Contracts (Set)
   - Clients (List)
   - Unoccupied Residences List
-7. Contract:
+7. Models.Contract:
   - Buyer (client)
   - Seller (agent)
   - Item (residence)
   - buyingDate (date years)
-8. Client:
+8. Models.Client:
   - last name (string)
   - first name (string)
   - email (string)

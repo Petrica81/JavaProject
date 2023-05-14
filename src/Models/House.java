@@ -1,4 +1,6 @@
-public class House extends Residence{
+package Models;
+
+public class House extends Residence {
     private Integer gardenArea;
 
     public House(String address, Integer area, Float price, Integer gardenArea){
