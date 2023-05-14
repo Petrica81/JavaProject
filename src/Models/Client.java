@@ -1,35 +1,26 @@
 package Models;
 
-public class Client {
-    private String firstName, lastName, email;
+public class Client extends User{
+    private Integer wallet;
 
-    public Client(String firstName, String lastName, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+    public Client(String firstName, String lastName, String email, Integer wallet) {
+        super(firstName,lastName,email);
+        this.wallet = wallet;
+    }
+    public Integer getWallet() {
+        return wallet;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public void setWallet(Integer wallet) {
+        this.wallet = wallet;
     }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    @Override
+    public String toString() {
+        return "Client{" +
+                "firstName = '" + super.getFirstName() + '\'' +
+                ", lastName = '" + super.getLastName() + '\'' +
+                ", email = '" + super.getEmail() + '\'' +
+                ", wallet = " + this.wallet + '$' +
+                '}';
     }
 }
