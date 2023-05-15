@@ -1,15 +1,17 @@
+import Exceptions.DataException;
 import Exceptions.LoginException;
 import Models.*;
 
+import javax.xml.crypto.Data;
 import java.util.*;
 
 public class Agency {
     private List<User> usersList = new ArrayList<>();
     private List<Contract> contractsList = new ArrayList<>();
-    private Map<String, Residence> residenceMap = new HashMap<String, Residence>() {{
-        put("House",new House("Bucuresti",60,15000, 80));
-        put("Apartment", new Apartment("Bucuresti",60,10000, 3));
-        put("Penthouse", new Penthouse("Bucuresti",70,30000, 200));
+    private Map<String, List<Residence>> residenceMap = new HashMap<String, List<Residence>>() {{
+        put("House",new ArrayList<>());
+        put("Apartment", new ArrayList<>());
+        put("Penthouse", new ArrayList<>());
     }};
     private static class SingletonHolder{
         private static final Agency INSTANCE = new Agency();
@@ -25,20 +27,70 @@ public class Agency {
                 new Client("Stefan","Diaconu","diaconustefan@gmail.pao",100000),
                 new Client("Andrei","Tava","tavaandrei@gmail.pao",500)
         ));
-        residenceMap.put("House", new House("Bucuresti",30,9000, 10));
 
+        List<Residence> residences = residenceMap.get("House");
+        residences.add(new House("Bucuresti",30,9000, 10));
+        residences.add(new House("Bucuresti",60,15000, 80));
+
+        residences = residenceMap.get("Apartment");
+
+        residences = residenceMap.get("Penthouse");
     }
     public List<User> getUsersList() {
         return usersList;
     }
+    public List<Agent> getAgentsList(){
+        List<Agent> aux = new ArrayList<>();
+        for(User u: usersList){
+            if(u instanceof Agent)
+                aux.add((Agent) u);
+        }
+        if(aux.isEmpty())
+            throw new DataException("No agents in database!");
+        return aux;
+    }
+    public List<Client> getClientsList(){
+        List<Client> aux = new ArrayList<>();
+        for(User u: usersList){
+            if(u instanceof Client)
+                aux.add((Client) u);
+        }
+        if(aux.isEmpty())
+            throw new DataException("No clients in database!");
+        return aux;
+    }
     public List<Contract> getContractsList() {
+        if(contractsList.isEmpty())
+            throw new DataException("No contracts in database!");
         return contractsList;
     }
 
-    public Map<String, Residence> getResidenceMap() {
+    public Map<String, List<Residence>> getResidenceMap() {
         return residenceMap;
     }
 
+    public List<Residence> getHouses(){
+        List<Residence> aux = residenceMap.get("House");
+        if(aux.isEmpty())
+            throw new DataException("There are no houses in database!");
+        return aux;
+    }
+    public List<Residence> getApartments(){
+        List<Residence> aux = residenceMap.get("Apartment");
+        if(aux.isEmpty())
+            throw new DataException("There are no apartments in database!");
+        return aux;
+    }
+    public List<Residence> getPenthouses(){
+        List<Residence> aux = residenceMap.get("Penthouse");
+        if(aux.isEmpty())
+            throw new DataException("There are no penthouses in database!");
+        return aux;
+    }
+
+    public void addResidence(Residence newResidence){
+        
+    }
     public Optional<Agent> getAgentByName(String firstName, String lastName){
         for(User a: usersList)
             if(a instanceof Agent && a.getFirstName().equalsIgnoreCase(firstName) && a.getLastName().equalsIgnoreCase(lastName))
@@ -54,14 +106,14 @@ public class Agency {
     public Agent agentLogin(String firstName, String lastName){
         Optional<Agent> agent = getAgentByName(firstName, lastName);
         if(agent.isEmpty())
-            throw new LoginException("There is no agent with given name in database");
+            throw new LoginException("There is no agent with given name in database!");
 
         return agent.get();
     }
     public Client clientLogin(String firstName, String lastName){
         Optional<Client> client = getClientByName(firstName, lastName);
         if(client.isEmpty())
-            throw new LoginException("There is no client with given name in database");
+            throw new LoginException("There is no client with given name in database!");
 
         return client.get();
     }

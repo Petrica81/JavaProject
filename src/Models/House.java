@@ -20,7 +20,7 @@ public class House extends Residence {
         return "House{" +
                 "address = '" + super.getAddress() + '\'' +
                 ", area = " + super.getArea() + " m2" +
-                ", price = '" + super.getPrice() + '$' +
+                ", price = " + super.getPrice() + '$' +
                 ", gardenArea = " + this.getGardenArea() + " m2"+
                 "}\n";
     }
