@@ -89,13 +89,18 @@ public class Agency {
     }
 
     public void addResidence(Residence newResidence){
-        
+        String clasa = newResidence.getClass().getSimpleName();
+
+        List<Residence> lista = residenceMap.get(clasa);
+
+        lista.add(newResidence);
+        residenceMap.put(clasa, lista);
     }
     public Optional<Agent> getAgentByName(String firstName, String lastName){
         for(User a: usersList)
             if(a instanceof Agent && a.getFirstName().equalsIgnoreCase(firstName) && a.getLastName().equalsIgnoreCase(lastName))
                 return Optional.of((Agent) a);
-        return Optional.empty();
+        throw new DataException("This agent don't exist!");
     }
     public Optional<Client> getClientByName(String firstName, String lastName){
         for(User c: usersList)
@@ -119,5 +124,26 @@ public class Agency {
     }
     public void addUser(User user){
         usersList.add(user);
+    }
+
+    public Residence getResidenceById(UUID id){
+        for(Residence casa: residenceMap.get("House"))
+            if(casa.getId() == id)
+                return casa;
+        for(Residence casa: residenceMap.get("Apartment"))
+            if(casa.getId() == id)
+                return casa;
+        for(Residence casa: residenceMap.get("Penthouse"))
+            if(casa.getId() == id)
+                return casa;
+
+        throw new DataException("The residence with given id don't exist!");
+    }
+    public void addContract(Contract contract){
+        contractsList.add(contract);
+    }
+    public void deleteResidence(Residence casa){
+        List<Residence> lista = residenceMap.get(casa.getClass().getSimpleName());
+        lista.remove(casa);
     }
 }

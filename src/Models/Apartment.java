@@ -18,7 +18,8 @@ public class Apartment extends Residence {
     @Override
     public String toString() {
         return "House{" +
-                "address = '" + super.getAddress() + '\'' +
+                "id = " + super.getId() +
+                ", address = '" + super.getAddress() + '\'' +
                 ", area = " + super.getArea() + " m2" +
                 ", price = '" + super.getPrice() + '$' +
                 ", floor = " + this.getFloor() +

@@ -18,7 +18,8 @@ public class Penthouse extends Residence {
     @Override
     public String toString() {
         return "Penthouse{" +
-                "address = '" + super.getAddress() + '\'' +
+                "id = " + super.getId() +
+                ", address = '" + super.getAddress() + '\'' +
                 ", area = " + super.getArea() + " m2" +
                 ", price = '" + super.getPrice() + '$' +
                 ", poolSize = " + this.getPoolSize() + " L" +

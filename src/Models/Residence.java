@@ -1,14 +1,22 @@
 package Models;
 
+import java.util.UUID;
+
 public abstract class Residence {
+    private UUID id;
     private String address;
     private Integer area;
     private Integer price;
 
     public Residence(String address, Integer area, Integer price){
+        this.id = UUID.randomUUID();
         this.address = address;
         this.area = area;
         this.price = price;
+    }
+
+    public UUID getId() {
+        return id;
     }
 
     public String getAddress() {
