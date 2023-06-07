@@ -2,7 +2,7 @@ package database;
 
 import java.sql.*;
 public class SQLiteConnection implements ISQLiteConnection{
-    private final String URL = "jdbc:sqlite:C:/sqlite/PAOdatabase/PAO.db";
+    private final String URL = "jdbc:sqlite:C:/sqlite/PAOdatabase/PAO";
     private Connection conn;
     static SQLiteConnection instance = null;
 
