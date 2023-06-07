@@ -1,6 +1,8 @@
 package Models;
 
-public class Client extends User{
+import Interfaces.IPrintable;
+
+public class Client extends User implements IPrintable {
     private Integer wallet;
 
     public Client(String firstName, String lastName, String email, Integer wallet) {

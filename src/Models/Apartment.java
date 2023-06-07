@@ -1,6 +1,8 @@
 package Models;
 
-public class Apartment extends Residence {
+import Interfaces.IPrintable;
+
+public class Apartment extends Residence implements IPrintable {
     private Integer floor;
 
     public Apartment(String address, Integer area, Integer price, Integer floor){

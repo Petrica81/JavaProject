@@ -3,29 +3,27 @@ import Exceptions.LoginException;
 import Models.*;
 
 import javax.xml.crypto.Data;
-import java.util.Scanner;
-import java.util.UUID;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-
         var service = Agency.getInstance();
         service.init();
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Do you have an account?: (Y/N)");
-        var rasp =scanner.next();
+        var rasp =scanner.nextLine();
         String firstName = "", lastName = "";
         User user = null;
 
         switch (rasp){
             case "Y","y" -> {
                 System.out.println("Enter your first name:");
-                firstName = scanner.next();
+                firstName = scanner.nextLine();
                 System.out.println("Enter your last name:");
-                lastName = scanner.next();
+                lastName = scanner.nextLine();
                 System.out.println("You are logging in as:\n1.Client\n2.Agent");
-                Integer tip = Integer.valueOf(scanner.next());
+                Integer tip = Integer.valueOf(scanner.nextLine());
                 switch (tip){
                     case 1 -> {
                         try{
@@ -53,13 +51,13 @@ public class Main {
             }
             case "N","n" -> {
                 System.out.println("Enter your first name:");
-                firstName = scanner.next();
+                firstName = scanner.nextLine();
                 System.out.println("Enter your last name:");
-                lastName = scanner.next();
+                lastName = scanner.nextLine();
                 System.out.println("Enter your email:");
-                String email = scanner.next();
+                String email = scanner.nextLine();
                 System.out.println("You are registering in as:\n1.Client\n2.Agent");
-                Integer tip = Integer.valueOf(scanner.next());
+                Integer tip = Integer.valueOf(scanner.nextLine());
                 switch (tip) {
                     case 1 -> {
                         user = new Client(firstName,lastName, email, 0);
@@ -106,7 +104,7 @@ public class Main {
             }
             System.out.println("0. Exit");
 
-            Integer op = Integer.valueOf(scanner.next());
+            Integer op = Integer.valueOf(scanner.nextLine());
 
             if(user instanceof Client && op > 5) op += 3;
 
@@ -119,7 +117,7 @@ public class Main {
                     System.out.println("2.Apartments");
                     System.out.println("3.Penthouses");
 
-                    Integer type = Integer.valueOf(scanner.next());
+                    Integer type = Integer.valueOf(scanner.nextLine());
                     switch (type) {
                         case 1 -> {
                             try {
@@ -250,7 +248,6 @@ public class Main {
                  default -> System.exit(0);
             }
             System.out.println("\nPress Enter to continue...");
-            scanner.nextLine();
             scanner.nextLine();
         }
     }

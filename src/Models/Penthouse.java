@@ -1,6 +1,8 @@
 package Models;
 
-public class Penthouse extends Residence {
+import Interfaces.IPrintable;
+
+public class Penthouse extends Residence implements IPrintable {
     private Integer poolSize;
 
     public Penthouse(String address, Integer area, Integer price, Integer poolSize){

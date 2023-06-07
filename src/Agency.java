@@ -1,11 +1,12 @@
 import Exceptions.DataException;
 import Exceptions.LoginException;
+import Interfaces.IAgency;
 import Models.*;
 
 import javax.xml.crypto.Data;
 import java.util.*;
 
-public class Agency {
+public class Agency implements IAgency {
     private List<User> usersList = new ArrayList<>();
     private List<Contract> contractsList = new ArrayList<>();
     private Map<String, List<Residence>> residenceMap = new HashMap<String, List<Residence>>() {{
@@ -27,6 +28,7 @@ public class Agency {
                 new Client("Stefan","Diaconu","diaconustefan@gmail.pao",100000),
                 new Client("Andrei","Tava","tavaandrei@gmail.pao",500)
         ));
+        usersList.sort(User.nameComparator());
 
         List<Residence> residences = residenceMap.get("House");
         residences.add(new House("Bucuresti",30,9000, 10));
@@ -124,6 +126,7 @@ public class Agency {
     }
     public void addUser(User user){
         usersList.add(user);
+        usersList.sort(User.nameComparator());
     }
 
     public Residence getResidenceById(UUID id){

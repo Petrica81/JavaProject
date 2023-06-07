@@ -1,5 +1,7 @@
 package Models;
 
+import java.util.Comparator;
+
 public abstract class User {
     private String firstName, lastName, email;
     public User(String firstName, String lastName, String email) {
@@ -29,5 +31,9 @@ public abstract class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public static Comparator<User> nameComparator() {
+        return Comparator.comparing(User::getFirstName, String.CASE_INSENSITIVE_ORDER).thenComparing(User::getLastName, String.CASE_INSENSITIVE_ORDER);
     }
 }

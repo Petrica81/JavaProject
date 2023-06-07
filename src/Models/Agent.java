@@ -1,6 +1,8 @@
 package Models;
 
-public class Agent extends User{
+import Interfaces.IPrintable;
+
+public class Agent extends User implements IPrintable {
     private Integer salary;
 
     public Agent(String firstName, String lastName, String email, Integer salary) {
