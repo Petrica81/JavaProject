@@ -1,6 +1,9 @@
 import Exceptions.DataException;
 import Exceptions.LoginException;
 import Models.*;
+import Repositories.JDBCUsers;
+import database.ISQLiteConnection;
+import database.SQLiteConnection;
 
 import javax.xml.crypto.Data;
 import java.util.*;
@@ -8,6 +11,8 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         var service = Agency.getInstance();
+        ISQLiteConnection connection = SQLiteConnection.getInstance();
+        JDBCUsers jdbcUsers = new JDBCUsers(connection);
         service.init();
 
         Scanner scanner = new Scanner(System.in);
