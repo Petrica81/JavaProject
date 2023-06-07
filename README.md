@@ -14,22 +14,20 @@ Object classes:
   - area(int)
   - price(float)
 5. Models.Agent:
-  - lastName(string)
-  - firstName(string)
-  - email(string)
   - salary(int)
-6. Agency(singleton):
-  - Agents (List)
-  - Contracts (Set)
-  - Clients (List)
-  - Unoccupied Residences List
-7. Models.Contract:
+6. Models.Client:
+  - wallet(int)
+7. Models.User (Base class for 5, 6):
+  - last name (string)
+  - first name (string)
+  - email (string)
+9. Agency(singleton):
+  - Users (List)
+  - Contracts (List)
+  - Unoccupied Residences (Map)
+10. Models.Contract:
   - Buyer (client)
   - Seller (agent)
   - Item (residence)
   - buyingDate (date years)
-8. Models.Client:
-  - last name (string)
-  - first name (string)
-  - email (string)
 
